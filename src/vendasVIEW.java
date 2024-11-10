@@ -18,7 +18,7 @@ public class vendasVIEW extends javax.swing.JFrame {
      */
     public vendasVIEW() {
         initComponents();
-        // listarProdutosVendidos();
+        listarProdutosVendidos();
     }
 
     /**
@@ -138,5 +138,25 @@ public class vendasVIEW extends javax.swing.JFrame {
     private javax.swing.JTable listaProdutos;
     // End of variables declaration//GEN-END:variables
 
+private void listarProdutosVendidos(){
+        try {
+            ProdutosDAO produtosdao = new ProdutosDAO();
+            
+            DefaultTableModel model = (DefaultTableModel) listaProdutos.getModel();
+            model.setNumRows(0);
+            
+            ArrayList<ProdutosDTO> listaVendidos = produtosdao.listarProdutosVendidos() ;
+            
+            for(int i = 0 ; i < listaVendidos.size(); i++){
+                model.addRow(new Object[]{
+                    listaVendidos.get(i).getId(),
+                    listaVendidos.get(i).getNome(),
+                    listaVendidos.get(i).getValor(),
+                    listaVendidos.get(i).getStatus()
+                });
+            }
+        } catch (Exception e) {
+        }
+ }
 
 }
