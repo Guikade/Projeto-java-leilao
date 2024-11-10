@@ -9,7 +9,7 @@ import java.sql.SQLException;
 public class ProdutosDAO {
 
     public void cadastrarProduto(ProdutosDTO produto) {
-        
+
         try {
             conectaDAO conexao = new conectaDAO();
 
@@ -29,7 +29,7 @@ public class ProdutosDAO {
     public ArrayList<ProdutosDTO> listarProdutos() {
         ArrayList<ProdutosDTO> lista = new ArrayList<ProdutosDTO>();
         try {
- 
+
             conectaDAO conexao = new conectaDAO();
 
             String sql = "SELECT * FROM produtos";
@@ -47,11 +47,11 @@ public class ProdutosDAO {
             }
 
         } catch (SQLException ex) {
-            System.out.println("Erro ao cadastrar no banco" + ex.getMessage());
+            System.out.println("Erro ao listar no banco" + ex.getMessage());
 
         }
 
         return lista;
     }
-
+    
 }
